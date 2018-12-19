@@ -4,6 +4,7 @@ var color3=["blue","yellow","blue","red","red","pink"];
 var color4=["pink","white","pink","red","green","red"];
 var color5=["green","white","green","green","white","yellow"];
 var color6=["green","white","pink","white","green","yellow"];
+var todosColores=["blue","yellow","pink","red","yellow","blue","blue","white","pink","red","yellow","blue","blue","yellow","blue","red","red","pink","pink","white","pink","red","green","red","green","white","green","green","white","yellow","green","white","pink","white","green","yellow"];
 var numero1=[2,6,5,4,5,5];
 var numero2=[4,6,6,3,2,6];
 var numero3=[3,4,1,2,6,3];
@@ -19,6 +20,9 @@ var colInicial=0;
 
 var filaFinal=0;
 var colFinal=0;
+
+var filaColumnaComprobar=[fila.value,columna.value];
+var movimientosRealizados=[];
 
 function casillaAleatoria() {
   while (true) {
@@ -80,13 +84,13 @@ document.write(`<td style="background-color:${color1[i]};font-size:80px; border:
   document.write("<tr>");
   for (let i = 0; i < numero3.length; i++) {
     if (posInicial[0]==3 && posInicial[1]==i+1) {
-            document.write(`<td style="background-color:${color2[i]};font-size:80px; border: 10px solid black">${numero3[i]}</td>`);
+            document.write(`<td style="background-color:${color3[i]};font-size:80px; border: 10px solid black">${numero3[i]}</td>`);
       }
     else if (posFinal[0]==3 && posFinal[1]==i+1) {
-  document.write(`<td style="background-color:${color2[i]};font-size:80px; border: 10px solid grey">${numero3[i]}</td>`);
+  document.write(`<td style="background-color:${color3[i]};font-size:80px; border: 10px solid grey">${numero3[i]}</td>`);
       }
       else {
-        document.write(`<td style="background-color:${color2[i]};font-size:80px; border: 10px solid #00FFA2">${numero3[i]}</td>`);
+        document.write(`<td style="background-color:${color3[i]};font-size:80px; border: 10px solid #00FFA2">${numero3[i]}</td>`);
       }
     }
   document.write("</tr>");
@@ -136,3 +140,14 @@ document.write(`<td style="background-color:${color4[i]};font-size:80px; border:
   document.write("</table>");
   tablero();
 console.log(posInicial);
+function comprobarMovimiento() {
+  let comprobarposInicial=posInicial;
+  if (posInicial[0]==fila.value || posInicial[1]==columna.value) {
+    mensajes.value="El movimiento es valido";
+    movimientosRealizados.push(filaColumnaComprobar);
+
+  }
+  else {
+    mensajes.value="El movimiento no es valido"
+  }
+}
