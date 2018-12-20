@@ -21,8 +21,9 @@ var colInicial=0;
 var filaFinal=0;
 var colFinal=0;
 
-var filaColumnaComprobar=[fila.value,columna.value];
 var movimientosRealizados=[];
+
+var contador=0;
 
 function casillaAleatoria() {
   while (true) {
@@ -143,11 +144,16 @@ console.log(posInicial);
 function comprobarMovimiento() {
   let comprobarposInicial=posInicial;
   if (posInicial[0]==fila.value || posInicial[1]==columna.value) {
-    mensajes.value="El movimiento es valido";
-    movimientosRealizados.push(filaColumnaComprobar);
-
+      mensajes.value="El movimiento es valido";
+      movimientosRealizados.splice(0,1, `${fila.value}`);
+      movimientosRealizados.splice(1,1, `${columna.value}`);
+      movimientosRealizados1.value=`(${movimientosRealizados})`
+      contador=contador+1;
+      numMovimientos.value=contador;
   }
   else {
     mensajes.value="El movimiento no es valido"
   }
+  fila.value="";
+  columna.value="";
 }
