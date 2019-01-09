@@ -147,9 +147,14 @@ function comprobarMovimiento() {
       mensajes.value="El movimiento es valido";
       movimientosRealizados.splice(0,1, `${fila.value}`);
       movimientosRealizados.splice(1,1, `${columna.value}`);
-      movimientosRealizados1.value=`(${movimientosRealizados})`
+      movimientosRealizados1.value=`(${movimientosRealizados})`;
+      posInicial.splice(0,1,`${fila.value}`);
+      posInicial.splice(1,1,`${columna.value}`);
       contador=contador+1;
       numMovimientos.value=contador;
+      if (posFinal[0]==fila.value && posFinal[1]==columna.value) {
+        mensajes.value="Has ganado!";
+      }
   }
   else {
     mensajes.value="El movimiento no es valido"
